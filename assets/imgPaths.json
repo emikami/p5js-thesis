@@ -1,0 +1,142 @@
+[
+  {
+    "name": "alt-LIBICON.gif",
+    "nameNoExt": "alt-LIBICON",
+    "heading": "alt",
+    "label": "LIBICON",
+    "path": "assets/images/alt-LIBICON.gif",
+    "x": 0,
+    "y": 0,
+    "scale": 1,
+    "zIndex": 0,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null
+  },
+  {
+    "name": "cool-dice.png",
+    "nameNoExt": "cool-dice",
+    "heading": "cool",
+    "label": "dice",
+    "path": "assets/images/cool-dice.png",
+    "x": 0,
+    "y": 0,
+    "headingList": null
+  },
+  {
+    "name": "DSICON.png",
+    "nameNoExt": "DSICON",
+    "heading": "DSICON",
+    "label": "",
+    "path": "assets/images/DSICON.png",
+    "x": 0,
+    "y": 0,
+    "headingList": null
+  },
+  {
+    "name": "elvis.png",
+    "nameNoExt": "elvis",
+    "heading": "elvis",
+    "label": "",
+    "path": "assets/images/elvis.png",
+    "x": 0,
+    "y": 0,
+    "headingList": null
+  },
+  {
+    "name": "LIBICON.gif",
+    "nameNoExt": "LIBICON",
+    "heading": "LIBICON",
+    "label": "",
+    "path": "assets/images/LIBICON.gif",
+    "x": 0,
+    "y": 0,
+    "headingList": null
+  },
+  {
+    "name": "lvsign.png",
+    "nameNoExt": "lvsign",
+    "heading": "lvsign",
+    "label": "",
+    "path": "assets/images/lvsign.png",
+    "x": 0,
+    "y": 0,
+    "scale": 1,
+    "zIndex": 0,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null
+  },
+  {
+    "name": "poker-chips-3.gif",
+    "nameNoExt": "poker-chips-3",
+    "heading": "poker",
+    "label": "chips-3",
+    "path": "assets/images/poker-chips-3.gif",
+    "x": 0,
+    "y": 0,
+    "scale": 1,
+    "zIndex": 0,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null
+  },
+  {
+    "name": "poker-chips1 - Copy - Copy - Copy - Copy.gif",
+    "nameNoExt": "poker-chips1 - Copy - Copy - Copy - Copy",
+    "heading": "poker",
+    "label": "chips1 - Copy - Copy - Copy - Copy",
+    "path": "assets/images/poker-chips1 - Copy - Copy - Copy - Copy.gif",
+    "x": 0,
+    "y": 0,
+    "headingList": null
+  },
+  {
+    "name": "poker-chips1 - Copy - Copy - Copy.gif",
+    "nameNoExt": "poker-chips1 - Copy - Copy - Copy",
+    "heading": "poker",
+    "label": "chips1 - Copy - Copy - Copy",
+    "path": "assets/images/poker-chips1 - Copy - Copy - Copy.gif",
+    "x": 0,
+    "y": 0,
+    "headingList": null
+  },
+  {
+    "name": "poker-chips2 - Copy - Copy - Copy - Copy.gif",
+    "nameNoExt": "poker-chips2 - Copy - Copy - Copy - Copy",
+    "heading": "poker",
+    "label": "chips2 - Copy - Copy - Copy - Copy",
+    "path": "assets/images/poker-chips2 - Copy - Copy - Copy - Copy.gif",
+    "x": 0,
+    "y": 0,
+    "headingList": null
+  },
+  {
+    "name": "poker-chips2 - Copy - Copy - Copy.gif",
+    "nameNoExt": "poker-chips2 - Copy - Copy - Copy",
+    "heading": "poker",
+    "label": "chips2 - Copy - Copy - Copy",
+    "path": "assets/images/poker-chips2 - Copy - Copy - Copy.gif",
+    "x": 0,
+    "y": 0,
+    "headingList": null
+  },
+  {
+    "name": "streets-real.png",
+    "nameNoExt": "streets-real",
+    "heading": "streets",
+    "label": "real",
+    "path": "assets/images/streets-real.png",
+    "x": 0,
+    "y": 0,
+    "scale": 1,
+    "zIndex": 0,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null
+  }
+]
