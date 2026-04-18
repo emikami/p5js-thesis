@@ -7,6 +7,7 @@ let sorted;
 let iconList;
 let LVICON;
 let assetsLoaded = false;
+let imgPathsCache = null;
 
 let popHeadings = ["houses", "library", "supermarket"];
 
@@ -16,8 +17,8 @@ class imgContainer{
         this.heading = meta.heading;
         this.label = meta.label;
         this.img = img;
-        this.w = img.width * 0.75;
-        this.h = img.height * 0.75;
+        this.w = img.width;
+        this.h = img.height;
         this.ogX = meta.x;
         this.ogY = meta.y;
         this.x = meta.x;
@@ -161,6 +162,8 @@ class imgContainer{
     }
 
     draw() {
+        if (this.alpha < 1 && this.targetAlpha === 0) return;
+
         push();
         translate(this.x, this.y); 
         if (this.heading === "effect"){blendMode(SCREEN);}
@@ -233,6 +236,24 @@ class PopImage {
 
     pop();
   }
+}
+
+function setLoadingStatus(text) {
+    document.getElementById('loading-status').textContent = text;
+}
+
+function onAssetsReady() {
+    let btn = document.getElementById('play-btn');
+    btn.textContent = 'Play';
+    btn.classList.add('ready');
+    btn.disabled = false;
+    document.getElementById('loading-status').textContent = '';
+
+    btn.addEventListener('click', () => {
+        let overlay = document.getElementById('start-overlay');
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.style.display = 'none', 800);
+    });
 }
 
 function mousePressed() {
@@ -311,9 +332,12 @@ function loadImageAsync(path) {
 let visibleHeadings = ["stripRes", "effect", "above_blue", "above_map", "below_blue", "BG"];
 
 async function loadByHeading(heading) {
-    const response = await fetch('assets/images/imgPaths.json');
-    const imgPaths = await response.json();
-    const group = imgPaths.filter(i => i.heading === heading);
+    if (!imgPathsCache){
+        const response = await fetch('assets/images/imgPaths.json');
+        imgPathsCache = await response.json();
+    }
+
+    const group = imgPathsCache.filter(i => i.heading === heading);
     let headCheck = false;
     if (visibleHeadings.includes(heading)) {headCheck = true;}
 
@@ -326,6 +350,7 @@ async function loadByHeading(heading) {
                 if (!heading === "houses" && meta.name.includes("label")){interval = i*50;}
                 return new PopImage(img, meta.nameNoExt, meta.heading, meta.scale, meta.x, meta.y, meta.w, meta.h, interval);
             }
+            img.resize(img.width * 0.75, img.height * 0.75);
             if (headCheck || meta.nameNoExt === "icon-0-LVICON"){isVis = true;}
             return new imgContainer(meta, img, isVis);
         })
@@ -340,7 +365,9 @@ async function setup() {
     imageMode(CENTER);
 
     bgImg = await loadImage("assets/images/BACKGROUND.png");
+    setLoadingStatus('background loaded');
     streets = await loadImage("assets/streets-real.png");
+    setLoadingStatus('street grid loaded')
 
     //--loading popimages-- headings are houses, library, and supermarket
     // const houses = await loadByHeading('houses');
@@ -350,12 +377,15 @@ async function setup() {
     // for (let asset of houses){
     //     popImages[asset.name] = asset;
     // }
+    //setLoadingStatus('houses loaded')
     // for (let asset of libraries){
     //     popImages[asset.name] = asset;
     // }
+    //setLoadingStatus('libraries loaded')
     // for (let asset of supermarkets){
     //     popImages[asset.name] = asset;
     // }
+    //setLoadingStatus('supermarkets loaded')
 
     // //--loading fadeimages---
     // const cuisine = await loadByHeading('cuisine');
@@ -363,58 +393,69 @@ async function setup() {
     // for (let asset of cuisine) {
     //     images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
     // }
+    //setLoadingStatus('cuisine loaded')
 
     const arch = await loadByHeading('arch');
 
     for (let asset of arch) {
         images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
     }
+    setLoadingStatus('architecture loaded')
     
     const stripRes = await loadByHeading('stripRes');
 
     for (let asset of stripRes){
         images[asset.name] = asset;
     }
+    setLoadingStatus('stripres loaded')
 
     const aboveBlue = await loadByHeading('above_blue');
     for (let asset of aboveBlue){
         images[asset.name] = asset;
     }
+    setLoadingStatus('strip-1 assets loaded')
 
     const belowBlue = await loadByHeading('below_blue');
     for (let asset of belowBlue){
         images[asset.name] = asset;
     }
+    setLoadingStatus('strip-2 assets loaded')
 
     const effect = await loadByHeading('effect');
     for (let asset of effect){
         images[asset.name] = asset;
     }
+    setLoadingStatus('strip-2a loaded')
 
     const BG = await loadByHeading('BG');
     for (let bg of BG ){
         images[bg.name] = bg;
     }
+    setLoadingStatus('bg loaded')
 
     const aboveMap = await loadByHeading('above_map');
     for (let asset of aboveMap){
         images[asset.name] = asset;
     }
+    setLoadingStatus('strip-3 assets loaded')
 
     const houseFade = await loadByHeading('houseFade');
     for (let asset of houseFade){
         images[asset.name] = asset;
     }
+    setLoadingStatus('house other assets loaded')
 
     const icons = await loadByHeading('icon');
     for (let asset of icons){
         images[asset.name] = asset;
     }
+    setLoadingStatus('icons loaded')
 
     const labels = await loadByHeading('label');
     for (let asset of labels){
         images[asset.name] = asset;
     }
+    setLoadingStatus('labels loaded')
 
     sorted = Object.values(images).sort((a, b) => a.zIndex - b.zIndex);
 
@@ -435,6 +476,7 @@ async function setup() {
     });
 
     console.log(images);
+    onAssetsReady();
 }
 
 function draw() {

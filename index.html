@@ -7,8 +7,20 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/p5.js"></script>
     <script src="js/addons/p5.sound.min.js"></script>
+    <script src="sketch.js" defer></script>
 </head>
 <body>
-    <script src="sketch.js"></script>
+
+    <div id="start-overlay">
+        <h1 id="project-title">Re-Visualizing Las Vegas: <br> Perspectives from the Chinese Diaspora</h1>
+        <div id = "proj-box">
+            <p id="project-desc">My thesis project is an interactive counter-map depicting the city of Las Vegas. A counter-map is defined as a map created to propose an alternate view that is not offered by traditional cartographic maps. </p>
+            <br>
+            <p id="project-desc">For this map, you will be able to click on icons, which will play a narrative from the Chinese residents I interviewed as a part of the project. While you listen to the narratives, the counter-map will change based on the themes of the narratives you hear. Some more icons may also appear after certain interactions. By interacting with my counter-map, I hope you will gain a new understanding and way of looking at Las Vegas as a city.</p>
+            </p>
+        </div>
+        <p id="loading-status">Loading assets...</p>
+    <button id="play-btn" disabled>Loading...</button>
+</div>
 </body>
 </html>
