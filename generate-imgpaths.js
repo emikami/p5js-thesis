@@ -6,27 +6,43 @@ let imgNames = "'";
 const ASSETS_DIR = './assets/images';
 const IMAGE_EXTENSIONS = /\.(png|jpg|jpeg|gif|webp|svg)$/i;
 
-const headingMaps = {
-    'icon-0-LVICON': ["effect", "BG", "houseFade", "label"],
-    'icon-CHICON': ["arch", "below_blue"],
-    'icon-SMICON': ["supermarket", "cuisine"],
-    'icon-house2': ["houses", "above_map"],
-    'icon-DSICON': [],  
-    'icon-LIBICON': ["library"]
-};
-
 // const headingMaps = {
-//     'icon-0-LVICON': [["effect", "BG", "houseFade", "label"], [], []],
-//     'icon-CHICON': [["below_blue"], ["arch"]],
-//     'icon-SMICON': [["supermarket", "cuisine"]],
-//     'icon-house2': [["houses", "above_map"]],
-//     'icon-DSICON': [[]],  
-//     'icon-LIBICON': [["library"]]
+//     'icon-0-LVICON': ["effect", "BG", "houseFade", "label"],
+//     'icon-CHICON': ["arch", "below_blue"],
+//     'icon-SMICON': ["supermarket", "cuisine"],
+//     'icon-house2': ["houses", "above_map"],
+//     'icon-DSICON': [],  
+//     'icon-LIBICON': ["library"]
 // };
 
+const headingMaps = {
+    'icon-0-LVICON': [["effect", "BG", "houseFade", "label"], [],],
+    'icon-CHICON': [["below_blue"], ["arch"]],
+    'icon-SMICON': [["supermarket", "cuisine"]],
+    'icon-house2': [["houses", "above_map"]],
+    'icon-DSICON': [[]],  
+    'icon-LIBICON': [["library"]],
+    'icon-alt-STRICON': [[]]
+};
+
 const iconNextLists = {
-  'icon-0-LVICON': ["icon-CHICON", "icon-house2", "icon-DSICON", "icon-LIBICON"],
-  'icon-CHICON': ["icon-SMICON"]
+  'icon-0-LVICON': [["icon-CHICON", "icon-house2", "icon-DSICON", "icon-LIBICON"], ["icon-alt-STRICON", "icon-0-LVICON"]],
+  'icon-CHICON': [["icon-SMICON"]],
+  'icon-SMICON': [[]],
+  'icon-house2': [[]],
+  'icon-DSICON': [[]],  
+  'icon-LIBICON': [[]],
+  'icon-alt-STRICON': [[]]
+}
+
+const glowQueues = {
+  'icon-0-LVICON': ["255, 215, 0", "255, 87, 0"],
+    'icon-CHICON': ["255, 215, 0", "255, 87, 0"],
+    'icon-SMICON': ["255, 215, 0"],
+    'icon-house2': ["255, 215, 0"],
+    'icon-DSICON': ["255, 215, 0"],  
+    'icon-LIBICON': ["255, 215, 0"],
+    'icon-alt-STRICON': ["207, 21, 8"]
 }
 
 const coordinates = {
@@ -92,6 +108,7 @@ const coordinates = {
     'above_blue-poker2': {x:1700, y:764, moveMode:2, zIndex:-7, scale:0.75, flipX:false, angle:0},
     'effect-FAKEBG': {x:960, y:540, moveMode:-1, zIndex:-1, scale:1.25, flipX:false, angle:0},
     'icon-0-LVICON': {x:1427, y:583, moveMode:-1, zIndex:3, scale:1, flipX:false, angle:0},
+    'icon-alt-STRICON': {x:1427, y:583, moveMode:-1, zIndex:3, scale:1, flipX:false, angle:0},
     'icon-CHICON': {x:1170, y:510, moveMode:-1, zIndex:2, scale:0.9, flipX:false, angle:0},
     'icon-SMICON': {x:1128, y:352, moveMode:-1, zIndex:-1, scale:0.9, flipX:false, angle:0},
     'alt-LIBICON': {x:0, y:0, moveMode:-1, zIndex:0, scale:1, flipX:false, angle:0}, 
@@ -141,6 +158,7 @@ const files = fs.readdirSync(ASSETS_DIR)
     const coords = coordinates[nameNoExt] ?? { x: 0, y: 0 };      
     const headingMap = headingMaps[nameNoExt] ?? null;
     const nextList = iconNextLists[nameNoExt] ?? null;
+    const glowQueue = glowQueues[nameNoExt] ?? null;
     imgNames += name;
     imgNames += "': {x:0, y:0, moveMode:-1, zIndex:0, scale:1, flipX:false, angle:0}, \n \t '";
     //for "heading-some-long-name"
@@ -158,7 +176,8 @@ const files = fs.readdirSync(ASSETS_DIR)
       angle: coords.angle,
       moveMode: coords.moveMode,
       headingList: headingMap,
-      iconNextList: nextList
+      iconNextList: nextList,
+      glowColors: glowQueue
     };
   });
 
