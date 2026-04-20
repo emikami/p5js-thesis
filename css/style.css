@@ -75,3 +75,16 @@ div #proj-box {
     min-height: 20px;
     font-family: 'Courier New', Courier, monospace;
 }
+
+#reload-btn {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 20;
+    padding: 6px 15px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1.5px solid black;
+    background: white;
+    cursor: pointer;
+}
