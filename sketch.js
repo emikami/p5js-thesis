@@ -498,15 +498,15 @@ async function setup() {
     textSize(40);
     textAlign(CENTER, CENTER);
 
-    // setLoadingStatus('audio data loading');
-    // const res = await fetch('assets/audio/subtitleData.json');
-    // snippetsData = await res.json();
+    setLoadingStatus('audio data loading');
+    const res = await fetch('assets/audio/subtitleData.json');
+    snippetsData = await res.json();
 
-    // for (let key in iconAudioData) {
-    //     let data = iconAudioData[key];
-    //     data.audio = await Promise.all(data.path.map(p => loadSound(p)));
-    // }
-    // setLoadingStatus("audio data loaded, background loading");
+    for (let key in iconAudioData) {
+        let data = iconAudioData[key];
+        data.audio = await Promise.all(data.path.map(p => loadSound(p)));
+    }
+    setLoadingStatus("audio data loaded, background loading");
 
     bgImg = await loadImage("assets/images/BACKGROUND.png");
     setLoadingStatus('background loaded, houses loading');
