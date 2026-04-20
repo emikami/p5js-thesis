@@ -105,11 +105,11 @@ let subStartTime = 0;
 let subRecordedTime = -1;
 
 let bgStack = [];
-const BG_VOLUME = 0.4;
-const BG_DUCKED_VOLUME = 0.1;
+const BG_VOLUME = 0.6;
+const BG_DUCKED_VOLUME = 0.2;
 
 class imgContainer{
-    constructor(meta, img, isVis, delay = 15000, speed = 0.05){
+    constructor(meta, img, isVis, delay = 15000, speed = 0.01){
         this.name = meta.nameNoExt;
         this.heading = meta.heading;
         this.label = meta.label;
