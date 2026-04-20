@@ -28,43 +28,64 @@ const headingDelays = {
     "ds": 19000
 };
 
+const bgDelays = {
+    3 : 31000,
+    7 : 73000,
+    4 : 22000,
+    8 : 18000,
+}
+
 let popHeadings = ["houses", "library", "supermarket"];
 
 const iconAudioData = {
     'icon-0-LVICON': {
         audio: null,
         path: ["assets/audio/audio_1.mp3", "assets/audio/audio_2.mp3"],
-        snippet: [1, 2]
+        snippet: [1, 2],
+        bgPaths: [null, null],
+        bgAudios: null,
     },
     'icon-CHICON': {
         audio: null,
         path: ["assets/audio/audio_7.mp3", "assets/audio/audio_6.mp3"],
-        snippet: [7, 6]
+        snippet: [7, 6],
+        bgPaths: ["assets/audio/ctown-sounds.mp3", null],
+        bgAudios: null
     },
     'icon-SMICON': {
         audio: null,
         path: ["assets/audio/audio_9.mp3"],
-        snippet: [9]
+        snippet: [9],
+        bgPaths: [null],
+        bgAudios: null
     },
     'icon-house2': {
         audio: null,
         path: ["assets/audio/audio_5.mp3"],
-        snippet: [5]
+        snippet: [5],
+        bgPaths: [null],
+        bgAudios: null
     },
     'icon-DSICON': {
         audio: null,
         path: ["assets/audio/audio_4.mp3"],
-        snippet: [4]
+        snippet: [4],
+        bgPaths: ["assets/audio/ds-sounds.mp3"],
+        bgAudios: null
     },  
     'icon-LIBICON': {
         audio: null,
         path: ["assets/audio/audio_8.mp3"],
-        snippet: [8]
+        snippet: [8],
+        bgPaths: ["assets/audio/lib-sounds.mp3"],
+        bgAudios: null
     },
     'icon-alt-STRICON': {
         audio: null,
         path: ["assets/audio/audio_3.mp3"],
-        snippet: [3]
+        snippet: [3],
+        bgPaths: ["assets/audio/casino-sounds.mp3"],
+        bgAudios: null
     }
 }
 
@@ -82,6 +103,9 @@ let subIndex = -1;
 let subStartTime = 0;
 let subRecordedTime = -1;
 
+let bgStack = [];
+const BG_VOLUME = 0.4;
+const BG_DUCKED_VOLUME = 0.1;
 
 class imgContainer{
     constructor(meta, img, isVis, delay = 15000, speed = 0.05){
@@ -402,12 +426,37 @@ function showIcons(iconNameList) {
     }
 }
 
+function addBgSound(sound) {
+    console.log("in addbgsound");
+    // duck all existing tracks
+    for (let s of bgStack) {
+        s.amp(BG_DUCKED_VOLUME, 1);
+    }
+    // add and play new one at full volume
+    sound.amp(BG_VOLUME);
+    sound.play();
+    sound.loop();
+    console.log("is sound playing?", sound.isPlaying());
+    bgStack.push(sound);
+}
+
 function playIconAudio(iconName, stepIndex) {
     let data = iconAudioData[iconName];
     if (!data || !snippetsData) return;
 
     if (activeSubs && activeSubs.audio.isPlaying()) {
         activeSubs.audio.stop();
+    }
+
+    let bgAudio = data.bgAudios?.[stepIndex];
+    console.log(`playing this icon data`);
+    console.log(data);
+    if (bgAudio) {
+        console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(bgAudio)));
+        let delayInt = bgDelays[data.snippet];
+        setTimeout(() => {
+            addBgSound(bgAudio);
+        }, delayInt); // delay in ms before bg sound plays
     }
 
     // find the matching snippet
@@ -420,6 +469,7 @@ function playIconAudio(iconName, stepIndex) {
         colors: snippet.meta.map(m => m.color),
         finished: false 
     };
+
 
     activeSubs.audio.onended(() => {
         activeSubs.finished = true; 
@@ -515,7 +565,11 @@ async function setup() {
     for (let key in iconAudioData) {
         let data = iconAudioData[key];
         data.audio = await Promise.all(data.path.map(p => loadSound(p)));
+        data.bgAudios = await Promise.all(
+        data.bgPaths.map(p => p ? loadSound(p) : null)
+    );
     }
+    console.log(iconAudioData);
     setLoadingStatus("audio data loaded, background loading");
 
     bgImg = await loadImage("assets/images/BACKGROUND.png");
@@ -649,7 +703,7 @@ function draw() {
 
     background(220);
     image(bgImg, 960, 540, 1920, 1080);
-
+    //console.log(bgStack);
     //image(streets, 960, 540, 1920*0.94, 1080*0.94);
     //images["arch-roof-99"].draw();
 
