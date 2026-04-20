@@ -84,7 +84,7 @@ let subRecordedTime = -1;
 
 
 class imgContainer{
-    constructor(meta, img, isVis, delay = 15000, speed = 0.005){
+    constructor(meta, img, isVis, delay = 15000, speed = 0.05){
         this.name = meta.nameNoExt;
         this.heading = meta.heading;
         this.label = meta.label;
