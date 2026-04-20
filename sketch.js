@@ -2,6 +2,7 @@ let imgPaths;
 let streets;
 let images = {};
 let popImages = {};
+let overlayImages = {};
 let bgImg;
 let sorted;
 let iconList;
@@ -403,6 +404,12 @@ function showImage(headingList) {
                 }
             }
         }
+        else if (label === "ds"){
+            for (let key in overlayImages){
+                let img = overlayImages[key];
+                img.fadeIn();
+            }
+        }
         else {
             for (let key in images) {
                 let img = images[key];
@@ -542,6 +549,10 @@ async function loadByHeading(heading) {
                 }
                 return new PopImage(img, meta.nameNoExt, meta.heading, meta.scale, meta.x, meta.y, meta.w, meta.h, delayInterval + interval);
             }
+            // else if (heading === "ds"){
+            //     img.resize(img.width * 0.75, img.height * 0.75);
+            //     return new imgContainer(meta, img, isVis, delayInterval);
+            // }
             img.resize(img.width * 0.75, img.height * 0.75);
             if (headCheck || meta.nameNoExt === "icon-0-LVICON"){isVis = true;}
             return new imgContainer(meta, img, isVis, delayInterval);
@@ -606,7 +617,7 @@ async function setup() {
     const ds = await loadByHeading('ds');
 
     for (let asset of ds) {
-        images[asset.name] = asset;
+        overlayImages[asset.name] = asset;
     }
     setLoadingStatus("desert loaded, architecture loading");
 
@@ -719,6 +730,11 @@ function draw() {
     for (let key in popImages) {
         popImages[key].update(millis());
         popImages[key].draw();
+    }
+
+    for (let key in overlayImages) {
+        overlayImages[key].update();
+        overlayImages[key].draw();
     }
 
     cursor(anyHovered ? HAND : ARROW);
