@@ -506,7 +506,7 @@ function loadImageAsync(path) {
     });
 }
 
-let visibleHeadings = ["stripRes", "effect", "above_blue", "above_map", "below_blue", "BG", "icon"];
+let visibleHeadings = ["stripRes", "effect", "above_blue", "above_map", "below_blue", "BG"];
 
 //let visibleHeadings = ["stripRes", "above_blue", "above_map", "cuisine", "arch", "icon", "houseFade", "houses", "label"];
 let houseDelay = 5570;
@@ -596,63 +596,63 @@ async function setup() {
     setLoadingStatus('supermarkets loaded, cuisine loading')
 
     // // //--loading fadeimages---
-    // const cuisine = await loadByHeading('cuisine');
+    const cuisine = await loadByHeading('cuisine');
 
-    // for (let asset of cuisine) {
-    //     images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
-    // }
-    // setLoadingStatus('cuisine loaded, desert loading');
+    for (let asset of cuisine) {
+        images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
+    }
+    setLoadingStatus('cuisine loaded, desert loading');
 
-    // const ds = await loadByHeading('ds');
+    const ds = await loadByHeading('ds');
 
-    // for (let asset of ds) {
-    //     images[asset.name] = asset;
-    // }
-    // setLoadingStatus("desert loaded, architecture loading");
+    for (let asset of ds) {
+        images[asset.name] = asset;
+    }
+    setLoadingStatus("desert loaded, architecture loading");
 
-    // const arch = await loadByHeading('arch');
+    const arch = await loadByHeading('arch');
 
-    // for (let asset of arch) {
-    //     images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
-    // }
-    // // setLoadingStatus('architecture loaded, stripres loading')
+    for (let asset of arch) {
+        images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
+    }
+    setLoadingStatus('architecture loaded, stripres loading')
     
-    // const stripRes = await loadByHeading('stripRes');
+    const stripRes = await loadByHeading('stripRes');
 
-    // for (let asset of stripRes){
-    //     images[asset.name] = asset;
-    // }
-    // setLoadingStatus('stripres loaded, strip-1 assets loading')
+    for (let asset of stripRes){
+        images[asset.name] = asset;
+    }
+    setLoadingStatus('stripres loaded, strip-1 assets loading')
 
-    // const aboveBlue = await loadByHeading('above_blue');
-    // for (let asset of aboveBlue){
-    //     images[asset.name] = asset;
-    // }
-    // setLoadingStatus('strip-1 assets loaded, strip-2 assets loading')
+    const aboveBlue = await loadByHeading('above_blue');
+    for (let asset of aboveBlue){
+        images[asset.name] = asset;
+    }
+    setLoadingStatus('strip-1 assets loaded, strip-2 assets loading')
 
-    // const belowBlue = await loadByHeading('below_blue');
-    // for (let asset of belowBlue){
-    //     images[asset.name] = asset;
-    // }
-    // setLoadingStatus('strip-2 assets loaded, strip-2a loading')
+    const belowBlue = await loadByHeading('below_blue');
+    for (let asset of belowBlue){
+        images[asset.name] = asset;
+    }
+    setLoadingStatus('strip-2 assets loaded, strip-2a loading')
 
-    // const effect = await loadByHeading('effect');
-    // for (let asset of effect){
-    //     images[asset.name] = asset;
-    // }
-    // setLoadingStatus('strip-2a loaded, bg loading')
+    const effect = await loadByHeading('effect');
+    for (let asset of effect){
+        images[asset.name] = asset;
+    }
+    setLoadingStatus('strip-2a loaded, bg loading')
 
-    // const BG = await loadByHeading('BG');
-    // for (let bg of BG ){
-    //     images[bg.name] = bg;
-    // }
-    // setLoadingStatus('bg loaded, strip-3 assets loading')
+    const BG = await loadByHeading('BG');
+    for (let bg of BG ){
+        images[bg.name] = bg;
+    }
+    setLoadingStatus('bg loaded, strip-3 assets loading')
 
-    // const aboveMap = await loadByHeading('above_map');
-    // for (let asset of aboveMap){
-    //     images[asset.name] = asset;
-    // }
-    // setLoadingStatus('strip-3 assets loaded, house other assets loading')
+    const aboveMap = await loadByHeading('above_map');
+    for (let asset of aboveMap){
+        images[asset.name] = asset;
+    }
+    setLoadingStatus('strip-3 assets loaded, house other assets loading')
 
     const houseFade = await loadByHeading('houseFade');
     for (let asset of houseFade){
