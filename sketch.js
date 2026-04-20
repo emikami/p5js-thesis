@@ -218,7 +218,7 @@ class imgContainer{
     }
 
     inBounds() {
-        if (!this.isIcon || !this.isVis || this.triggered) return false; // reemmebr to put back in ||!isfinished
+        if (!this.isIcon || !this.isVis || this.triggered || !this.isFinished) return false; // reemmebr to put back in ||!isfinished
         let hw = (this.w * this.scale) / 2;
         let hh = (this.h * this.scale) / 2;
         return mouseX > this.x - hw &&
