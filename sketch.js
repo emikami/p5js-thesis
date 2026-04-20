@@ -12,20 +12,20 @@ let isFinished = true;
 
 const headingDelays = {
     "cuisine": 26000,
-    "houses": 21000,
-    "library": 30000,
-    "supermarket": 21500,
+    "houses": 18000,
+    "library": 15000,
+    "supermarket": 28000,
     "above_blue": 0,
     "above_map": 32000,
-    "arch": 24000,
-    "below_blue": 36000,
-    "houseFade": 36000,
-    "icon": 34000,
-    "BG": 34000,
-    "effect": 34000,
-    "label": 41000,
+    "arch": 5000,
+    "below_blue": 39000,
+    "houseFade": 40000,
+    "icon": 30000,
+    "BG": 39000,
+    "effect": 41000,
+    "label": 42000,
     "stripRes": 0,
-    "ds": 0
+    "ds": 19000
 };
 
 let popHeadings = ["houses", "library", "supermarket"];
@@ -456,10 +456,11 @@ function loadImageAsync(path) {
     });
 }
 
-let visibleHeadings = ["stripRes", "effect", "above_blue", "above_map", "below_blue", "BG"];
+let visibleHeadings = ["stripRes", "effect", "above_blue", "above_map", "below_blue", "BG", "icon"];
 
 //let visibleHeadings = ["stripRes", "above_blue", "above_map", "cuisine", "arch", "icon", "houseFade", "houses", "label"];
-
+let houseDelay = 5570;
+let lastInterval = 0;
 async function loadByHeading(heading) {
     if (!imgPathsCache){
         const response = await fetch('assets/images/imgPaths.json');
@@ -477,10 +478,19 @@ async function loadByHeading(heading) {
             const img = await loadImageAsync(meta.path);
             //console.log(meta.path, img.width, img.height);
             if (popHeadings.includes(heading)) {
-                let interval = delayInterval + i*5500;
-                if (heading !== "houses" && meta.name.includes("label")){interval = delayInterval + i*2500;}
-                else if (heading === "supermarket") {interval = delayInterval + i*2500}
-                return new PopImage(img, meta.nameNoExt, meta.heading, meta.scale, meta.x, meta.y, meta.w, meta.h, interval);
+                let interval = 0;
+                if (heading === "houses"){
+                    interval = lastInterval + houseDelay;
+                    lastInterval = interval;
+                    houseDelay = houseDelay*0.85;
+                }
+                else if (heading === "library"){
+                    interval = 5750*(Math.floor(i/2)) + 150*(i&1);
+                }
+                else {
+                    interval = 3000*(Math.floor((i+1)/2)) + 150*(i&1);
+                }
+                return new PopImage(img, meta.nameNoExt, meta.heading, meta.scale, meta.x, meta.y, meta.w, meta.h, delayInterval + interval);
             }
             img.resize(img.width * 0.75, img.height * 0.75);
             if (headCheck || meta.nameNoExt === "icon-0-LVICON"){isVis = true;}
@@ -510,8 +520,6 @@ async function setup() {
 
     bgImg = await loadImage("assets/images/BACKGROUND.png");
     setLoadingStatus('background loaded, houses loading');
-    //streets = await loadImage("assets/streets-real.png");
-    //setLoadingStatus('street grid loaded, houses loading')
 
     //// --loading popimages-- headings are houses, library, and supermarket
     const houses = await loadByHeading('houses');
@@ -533,64 +541,64 @@ async function setup() {
     }
     setLoadingStatus('supermarkets loaded, cuisine loading')
 
-    // //--loading fadeimages---
-    const cuisine = await loadByHeading('cuisine');
+    // // //--loading fadeimages---
+    // const cuisine = await loadByHeading('cuisine');
 
-    for (let asset of cuisine) {
-        images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
-    }
-    setLoadingStatus('cuisine loaded, desert loading');
+    // for (let asset of cuisine) {
+    //     images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
+    // }
+    // setLoadingStatus('cuisine loaded, desert loading');
 
-    const ds = await loadByHeading('ds');
+    // const ds = await loadByHeading('ds');
 
-    for (let asset of ds) {
-        images[asset.name] = asset;
-    }
-    setLoadingStatus("desert loaded, architecture loading");
+    // for (let asset of ds) {
+    //     images[asset.name] = asset;
+    // }
+    // setLoadingStatus("desert loaded, architecture loading");
 
-    const arch = await loadByHeading('arch');
+    // const arch = await loadByHeading('arch');
 
-    for (let asset of arch) {
-        images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
-    }
-    setLoadingStatus('architecture loaded, stripres loading')
+    // for (let asset of arch) {
+    //     images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
+    // }
+    // // setLoadingStatus('architecture loaded, stripres loading')
     
-    const stripRes = await loadByHeading('stripRes');
+    // const stripRes = await loadByHeading('stripRes');
 
-    for (let asset of stripRes){
-        images[asset.name] = asset;
-    }
-    setLoadingStatus('stripres loaded, strip-1 assets loading')
+    // for (let asset of stripRes){
+    //     images[asset.name] = asset;
+    // }
+    // setLoadingStatus('stripres loaded, strip-1 assets loading')
 
-    const aboveBlue = await loadByHeading('above_blue');
-    for (let asset of aboveBlue){
-        images[asset.name] = asset;
-    }
-    setLoadingStatus('strip-1 assets loaded, strip-2 assets loading')
+    // const aboveBlue = await loadByHeading('above_blue');
+    // for (let asset of aboveBlue){
+    //     images[asset.name] = asset;
+    // }
+    // setLoadingStatus('strip-1 assets loaded, strip-2 assets loading')
 
-    const belowBlue = await loadByHeading('below_blue');
-    for (let asset of belowBlue){
-        images[asset.name] = asset;
-    }
-    setLoadingStatus('strip-2 assets loaded, strip-2a loading')
+    // const belowBlue = await loadByHeading('below_blue');
+    // for (let asset of belowBlue){
+    //     images[asset.name] = asset;
+    // }
+    // setLoadingStatus('strip-2 assets loaded, strip-2a loading')
 
-    const effect = await loadByHeading('effect');
-    for (let asset of effect){
-        images[asset.name] = asset;
-    }
-    setLoadingStatus('strip-2a loaded, bg loading')
+    // const effect = await loadByHeading('effect');
+    // for (let asset of effect){
+    //     images[asset.name] = asset;
+    // }
+    // setLoadingStatus('strip-2a loaded, bg loading')
 
-    const BG = await loadByHeading('BG');
-    for (let bg of BG ){
-        images[bg.name] = bg;
-    }
-    setLoadingStatus('bg loaded, strip-3 assets loading')
+    // const BG = await loadByHeading('BG');
+    // for (let bg of BG ){
+    //     images[bg.name] = bg;
+    // }
+    // setLoadingStatus('bg loaded, strip-3 assets loading')
 
-    const aboveMap = await loadByHeading('above_map');
-    for (let asset of aboveMap){
-        images[asset.name] = asset;
-    }
-    setLoadingStatus('strip-3 assets loaded, house other assets loading')
+    // const aboveMap = await loadByHeading('above_map');
+    // for (let asset of aboveMap){
+    //     images[asset.name] = asset;
+    // }
+    // setLoadingStatus('strip-3 assets loaded, house other assets loading')
 
     const houseFade = await loadByHeading('houseFade');
     for (let asset of houseFade){
@@ -617,26 +625,19 @@ async function setup() {
     iconList.forEach(icon => {
         icon.onClick = () => {
             let current = icon.headingList[icon.queueIndex];
-            showImage(current);
+            
             if (icon.iconNameList !== null && icon.queueIndex < icon.iconNameList.length){
                 showIcons(icon.iconNameList[icon.queueIndex]);
             }
             playIconAudio(icon.name, icon.queueIndex);
-            // showIcons(icon.iconNameList);
-            // let current = icon.headingList[icon.queueIndex];
-            // showImage(current);
-            //'icon-CHICON': [["below_blue"], ["arch"]],
-            //q0, length 2 (clicked)
-            //q1
-            //q1, length 2 (clicked)
-            //q2
-            
-            
-            //console.log(`on click queue index: ${icon.queueIndex}`);
+
+            //await ensureLoaded(current);
+            showImage(current);
+
+
             if (icon.queueIndex < icon.headingList.length) {
                 icon.queueIndex++; // advance to next interaction
             } 
-            //console.log(`updated on click queue index: ${icon.queueIndex}`);
         }
     });
 
