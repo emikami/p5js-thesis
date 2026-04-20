@@ -7,13 +7,14 @@
     "path": "assets/images/above_blue-elvis1.gif",
     "x": 177,
     "y": 780,
-    "scale": 1.25,
+    "scale": 1.55,
     "zIndex": 7,
     "flipX": false,
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "above_blue-elvis2.gif",
@@ -29,14 +30,15 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
-    "name": "above_blue-elvis3.gif",
-    "nameNoExt": "above_blue-elvis3",
+    "name": "above_blue-elvis3-effect.gif",
+    "nameNoExt": "above_blue-elvis3-effect",
     "heading": "above_blue",
-    "label": "elvis3",
-    "path": "assets/images/above_blue-elvis3.gif",
+    "label": "elvis3-effect",
+    "path": "assets/images/above_blue-elvis3-effect.gif",
     "x": 1389,
     "y": 47,
     "scale": 1.25,
@@ -45,14 +47,15 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
-    "name": "above_blue-glass.gif",
-    "nameNoExt": "above_blue-glass",
+    "name": "above_blue-glass-effect.gif",
+    "nameNoExt": "above_blue-glass-effect",
     "heading": "above_blue",
-    "label": "glass",
-    "path": "assets/images/above_blue-glass.gif",
+    "label": "glass-effect",
+    "path": "assets/images/above_blue-glass-effect.gif",
     "x": 1325.6,
     "y": 196.4,
     "scale": 1,
@@ -61,7 +64,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "above_blue-poker1.png",
@@ -77,7 +81,8 @@
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "above_blue-poker2.png",
@@ -93,7 +98,8 @@
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "above_map-poker-chips1.gif",
@@ -109,7 +115,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "above_map-poker-chips2.gif",
@@ -122,10 +129,11 @@
     "scale": 1,
     "zIndex": 4,
     "flipX": false,
-    "angle": 90,
+    "angle": 270,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "above_map-sign-big.gif",
@@ -141,7 +149,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "above_map-static.png",
@@ -157,7 +166,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof-99.png",
@@ -168,12 +178,13 @@
     "x": -60,
     "y": 176.8,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof1.png",
@@ -184,12 +195,13 @@
     "x": 1385,
     "y": 973.2,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof2-2.png",
@@ -200,12 +212,13 @@
     "x": 1967.8,
     "y": 639.8,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof2.png",
@@ -216,12 +229,13 @@
     "x": 351.8,
     "y": 934.8,
     "scale": 1,
-    "zIndex": 1,
+    "zIndex": 6,
     "flipX": false,
     "angle": 0,
     "moveMode": -2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof3-2.png",
@@ -232,12 +246,13 @@
     "x": 1661.4,
     "y": 874.4,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 5,
     "flipX": false,
     "angle": 90,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof3.png",
@@ -248,12 +263,13 @@
     "x": 1898.4,
     "y": 140.4,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof4-2.png",
@@ -264,12 +280,13 @@
     "x": 25.8,
     "y": 80.4,
     "scale": 1,
-    "zIndex": -1,
+    "zIndex": 4,
     "flipX": false,
     "angle": 90,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof4.png",
@@ -280,12 +297,13 @@
     "x": 578.4,
     "y": 1010.8,
     "scale": 1,
-    "zIndex": -1,
+    "zIndex": 4,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-roof5.png",
@@ -296,12 +314,13 @@
     "x": 1661.6,
     "y": 25.8,
     "scale": 1,
-    "zIndex": -1,
+    "zIndex": 4,
     "flipX": false,
     "angle": 180,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-statue-blue.png",
@@ -312,12 +331,13 @@
     "x": 184.6,
     "y": 783.6,
     "scale": 1,
-    "zIndex": 2,
+    "zIndex": 6,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "arch-statue-red.png",
@@ -328,12 +348,13 @@
     "x": 1844.6,
     "y": 842,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "BACKGROUND.png",
@@ -344,7 +365,93 @@
     "x": 0,
     "y": 0,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "below_blue-cool-dice.png",
+    "nameNoExt": "below_blue-cool-dice",
+    "heading": "below_blue",
+    "label": "cool-dice",
+    "path": "assets/images/below_blue-cool-dice.png",
+    "x": 490,
+    "y": 230,
+    "scale": 1,
+    "zIndex": -10,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": 0,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "below_blue-cool-dice2.png",
+    "nameNoExt": "below_blue-cool-dice2",
+    "heading": "below_blue",
+    "label": "cool-dice2",
+    "path": "assets/images/below_blue-cool-dice2.png",
+    "x": 889,
+    "y": 689,
+    "scale": 1,
+    "zIndex": -10,
+    "flipX": false,
+    "angle": 20,
+    "moveMode": 1,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "below_blue-cool-dice3.png",
+    "nameNoExt": "below_blue-cool-dice3",
+    "heading": "below_blue",
+    "label": "cool-dice3",
+    "path": "assets/images/below_blue-cool-dice3.png",
+    "x": 212,
+    "y": 350,
+    "scale": 0.75,
+    "zIndex": -10,
+    "flipX": false,
+    "angle": 180,
+    "moveMode": 1,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "below_blue-glass.gif",
+    "nameNoExt": "below_blue-glass",
+    "heading": "below_blue",
+    "label": "glass",
+    "path": "assets/images/below_blue-glass.gif",
+    "x": 419,
+    "y": 507,
+    "scale": 1.55,
+    "zIndex": -10,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "below_blue-sign.png",
+    "nameNoExt": "below_blue-sign",
+    "heading": "below_blue",
+    "label": "sign",
+    "path": "assets/images/below_blue-sign.png",
+    "x": 1900,
+    "y": 488,
+    "scale": 0.55,
+    "zIndex": -8,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": 2,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "below_blue-static.png",
@@ -360,7 +467,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "BG-FAKEBG.png",
@@ -376,7 +484,25 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "BG-steets-glow.png",
+    "nameNoExt": "BG-steets-glow",
+    "heading": "BG",
+    "label": "steets-glow",
+    "path": "assets/images/BG-steets-glow.png",
+    "x": 960,
+    "y": 540,
+    "scale": 1,
+    "zIndex": 3,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "chinatownplaza.png",
@@ -386,13 +512,9 @@
     "path": "assets/images/chinatownplaza.png",
     "x": 0,
     "y": 0,
-    "scale": 1,
-    "zIndex": 0,
-    "flipX": false,
-    "angle": 0,
-    "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-choisum-blue-1.png",
@@ -403,12 +525,13 @@
     "x": 117.6,
     "y": 796.4,
     "scale": 1,
-    "zIndex": 1,
+    "zIndex": 5,
     "flipX": false,
     "angle": -25,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-choisum-blue.png",
@@ -419,12 +542,13 @@
     "x": 1787,
     "y": 120.4,
     "scale": 1,
-    "zIndex": 1,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-choisum-orange-2.png",
@@ -435,12 +559,13 @@
     "x": 1540,
     "y": 833.2,
     "scale": 1,
-    "zIndex": -1,
+    "zIndex": 5,
     "flipX": true,
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-choisum-orange.png",
@@ -451,12 +576,13 @@
     "x": 1760.6,
     "y": 945.2,
     "scale": 1,
-    "zIndex": 1,
+    "zIndex": 7,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-napa-blue-1.png",
@@ -467,12 +593,13 @@
     "x": 677.6,
     "y": 136.4,
     "scale": 0.45,
-    "zIndex": 0,
+    "zIndex": 6,
     "flipX": false,
     "angle": 190,
     "moveMode": 0,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-napa-blue.png",
@@ -483,12 +610,13 @@
     "x": 792.2,
     "y": 920.4,
     "scale": 1,
-    "zIndex": 3,
+    "zIndex": 7,
     "flipX": false,
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-napa-green-2.png",
@@ -499,12 +627,13 @@
     "x": 1842.6,
     "y": 500.4,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 4,
     "flipX": true,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-napa-green-3.png",
@@ -515,12 +644,13 @@
     "x": 1696.8,
     "y": 212.4,
     "scale": 0.65,
-    "zIndex": -1,
+    "zIndex": 5,
     "flipX": true,
     "angle": 70,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-napa-green.png",
@@ -531,12 +661,13 @@
     "x": 54.6,
     "y": 660,
     "scale": 1,
-    "zIndex": 1,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 0,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-shaoxing-2.png",
@@ -547,12 +678,13 @@
     "x": 368.8,
     "y": 767.2,
     "scale": 0.7,
-    "zIndex": -1,
+    "zIndex": 3,
     "flipX": false,
     "angle": 10,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-shaoxing-3.png",
@@ -563,12 +695,13 @@
     "x": 396.8,
     "y": 51.6,
     "scale": 0.55,
-    "zIndex": 0,
+    "zIndex": 6,
     "flipX": false,
     "angle": -15,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-shaoxing.png",
@@ -579,12 +712,13 @@
     "x": 1633,
     "y": 681.6,
     "scale": 1,
-    "zIndex": 1,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 0,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-soysauce-dark-1.png",
@@ -595,12 +729,13 @@
     "x": 93.6,
     "y": 737.2,
     "scale": 0.45,
-    "zIndex": 1,
+    "zIndex": 5,
     "flipX": false,
     "angle": 82,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-soysauce-dark.png",
@@ -611,12 +746,13 @@
     "x": 1671,
     "y": 54,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 6,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-soysauce-light-2.png",
@@ -627,12 +763,13 @@
     "x": 1777.6,
     "y": 720.8,
     "scale": 0.65,
-    "zIndex": 0,
+    "zIndex": 5,
     "flipX": false,
     "angle": 10,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-soysauce-light.png",
@@ -643,12 +780,13 @@
     "x": 258.6,
     "y": 788.4,
     "scale": 1,
-    "zIndex": 4,
+    "zIndex": 8,
     "flipX": false,
     "angle": 0,
     "moveMode": 3,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-tangerine-down.png",
@@ -659,12 +797,13 @@
     "x": 521.4,
     "y": 883.2,
     "scale": 1,
-    "zIndex": 3,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "cuisine-tangerine-up.png",
@@ -680,7 +819,59 @@
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "ds-0-lens.png",
+    "nameNoExt": "ds-0-lens",
+    "heading": "ds",
+    "label": "0-lens",
+    "path": "assets/images/ds-0-lens.png",
+    "x": 960,
+    "y": 540,
+    "scale": 1.25,
+    "zIndex": 20,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "ds-1-overlens.png",
+    "nameNoExt": "ds-1-overlens",
+    "heading": "ds",
+    "label": "1-overlens",
+    "path": "assets/images/ds-1-overlens.png",
+    "x": 960,
+    "y": 540,
+    "scale": 1.25,
+    "zIndex": 20,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "ds-2-morange.png",
+    "nameNoExt": "ds-2-morange",
+    "heading": "ds",
+    "label": "2-morange",
+    "path": "assets/images/ds-2-morange.png",
+    "x": 960,
+    "y": 540,
+    "scale": 1.25,
+    "zIndex": 20,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "effect-FAKEBG.png",
@@ -691,12 +882,13 @@
     "x": 960,
     "y": 540,
     "scale": 1.25,
-    "zIndex": -1,
+    "zIndex": -9,
     "flipX": false,
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houseFade-house1.png",
@@ -712,7 +904,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houseFade-house3.png",
@@ -728,7 +921,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houseFade-house4.png",
@@ -744,7 +938,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houseFade-rect-0.png",
@@ -760,7 +955,25 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
+  },
+  {
+    "name": "houseFade-streets-real.png",
+    "nameNoExt": "houseFade-streets-real",
+    "heading": "houseFade",
+    "label": "streets-real",
+    "path": "assets/images/houseFade-streets-real.png",
+    "x": 960,
+    "y": 540,
+    "scale": 1,
+    "zIndex": 3,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": null,
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houses-1rect-1.png",
@@ -776,7 +989,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houses-1rect-2.png",
@@ -792,7 +1006,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houses-1rect-3.png",
@@ -808,7 +1023,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houses-1rect-4.png",
@@ -824,7 +1040,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houses-1rect-5.png",
@@ -840,7 +1057,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houses-2label-streets.png",
@@ -856,7 +1074,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houses-2label-summerlin.png",
@@ -872,7 +1091,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "houses-2label-sv.png",
@@ -888,7 +1108,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "icon-0-LVICON.gif",
@@ -899,21 +1120,57 @@
     "x": 1427,
     "y": 583,
     "scale": 1,
-    "zIndex": 3,
+    "zIndex": 8,
     "flipX": false,
     "angle": 0,
     "moveMode": -1,
     "headingList": [
-      "effect",
-      "BG",
-      "houseFade",
-      "label"
+      [
+        "effect",
+        "BG",
+        "houseFade",
+        "label"
+      ],
+      []
     ],
     "iconNextList": [
-      "icon-CHICON",
-      "icon-house2",
-      "icon-DSICON",
-      "icon-LIBICON"
+      [
+        "icon-CHICON",
+        "icon-house2",
+        "icon-DSICON",
+        "icon-LIBICON"
+      ],
+      [
+        "icon-alt-STRICON",
+        "icon-0-LVICON"
+      ]
+    ],
+    "glowColors": [
+      "255, 215, 0",
+      "255, 87, 0"
+    ]
+  },
+  {
+    "name": "icon-alt-STRICON.gif",
+    "nameNoExt": "icon-alt-STRICON",
+    "heading": "icon",
+    "label": "alt-STRICON",
+    "path": "assets/images/icon-alt-STRICON.gif",
+    "x": 1427,
+    "y": 583,
+    "scale": 1,
+    "zIndex": 8,
+    "flipX": false,
+    "angle": 0,
+    "moveMode": -1,
+    "headingList": [
+      []
+    ],
+    "iconNextList": [
+      []
+    ],
+    "glowColors": [
+      "207, 21, 8"
     ]
   },
   {
@@ -925,16 +1182,26 @@
     "x": 1170,
     "y": 510,
     "scale": 0.9,
-    "zIndex": 2,
+    "zIndex": 7,
     "flipX": false,
     "angle": 0,
     "moveMode": -1,
     "headingList": [
-      "arch",
-      "below_blue"
+      [
+        "below_blue"
+      ],
+      [
+        "arch"
+      ]
     ],
     "iconNextList": [
-      "icon-SMICON"
+      [
+        "icon-SMICON"
+      ]
+    ],
+    "glowColors": [
+      "255, 215, 0",
+      "255, 87, 0"
     ]
   },
   {
@@ -946,12 +1213,21 @@
     "x": 960,
     "y": 105,
     "scale": 1,
-    "zIndex": 0,
+    "zIndex": 4,
     "flipX": false,
     "angle": 0,
     "moveMode": -1,
-    "headingList": [],
-    "iconNextList": null
+    "headingList": [
+      [
+        "ds"
+      ]
+    ],
+    "iconNextList": [
+      []
+    ],
+    "glowColors": [
+      "255, 215, 0"
+    ]
   },
   {
     "name": "icon-house2.png",
@@ -962,15 +1238,22 @@
     "x": 1386,
     "y": 355,
     "scale": 0.3,
-    "zIndex": 2,
+    "zIndex": 6,
     "flipX": false,
     "angle": 0,
     "moveMode": -1,
     "headingList": [
-      "houses",
-      "above_map"
+      [
+        "houses",
+        "above_map"
+      ]
     ],
-    "iconNextList": null
+    "iconNextList": [
+      []
+    ],
+    "glowColors": [
+      "255, 215, 0"
+    ]
   },
   {
     "name": "icon-LIBICON.gif",
@@ -981,14 +1264,22 @@
     "x": 1560,
     "y": 236,
     "scale": 0.9,
-    "zIndex": 0,
+    "zIndex": 5,
     "flipX": false,
     "angle": 0,
     "moveMode": -1,
     "headingList": [
-      "library"
+      [
+        "library",
+        "above_blue"
+      ]
     ],
-    "iconNextList": null
+    "iconNextList": [
+      []
+    ],
+    "glowColors": [
+      "255, 215, 0"
+    ]
   },
   {
     "name": "icon-SMICON.gif",
@@ -999,15 +1290,22 @@
     "x": 1128,
     "y": 352,
     "scale": 0.9,
-    "zIndex": -1,
+    "zIndex": 4,
     "flipX": false,
     "angle": 0,
     "moveMode": -1,
     "headingList": [
-      "supermarket",
-      "cuisine"
+      [
+        "supermarket",
+        "cuisine"
+      ]
     ],
-    "iconNextList": null
+    "iconNextList": [
+      []
+    ],
+    "glowColors": [
+      "255, 215, 0"
+    ]
   },
   {
     "name": "label-ct.png",
@@ -1023,7 +1321,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "label-lvlib.png",
@@ -1039,7 +1338,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "label-rrocks.png",
@@ -1055,7 +1355,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "label-strip.png",
@@ -1071,7 +1372,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "library-0sv.gif",
@@ -1087,7 +1389,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "library-1label-svlib.png",
@@ -1103,7 +1406,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "library-2sw.gif",
@@ -1119,7 +1423,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "library-label-swlib.png",
@@ -1135,7 +1440,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "strip-icon.png",
@@ -1145,13 +1451,9 @@
     "path": "assets/images/strip-icon.png",
     "x": 0,
     "y": 0,
-    "scale": 1,
-    "zIndex": 0,
-    "flipX": false,
-    "angle": 0,
-    "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "strip-poker.png",
@@ -1161,13 +1463,9 @@
     "path": "assets/images/strip-poker.png",
     "x": 0,
     "y": 0,
-    "scale": 1,
-    "zIndex": 0,
-    "flipX": false,
-    "angle": 0,
-    "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "strip-poker2.png",
@@ -1177,13 +1475,9 @@
     "path": "assets/images/strip-poker2.png",
     "x": 0,
     "y": 0,
-    "scale": 1,
-    "zIndex": 0,
-    "flipX": false,
-    "angle": 0,
-    "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "strip4-hand.gif",
@@ -1199,7 +1493,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-dice-blue.png",
@@ -1210,12 +1505,13 @@
     "x": 660,
     "y": 231.6,
     "scale": 1,
-    "zIndex": -2,
+    "zIndex": 6,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-dice-green.png",
@@ -1231,7 +1527,8 @@
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-dice-red.png",
@@ -1247,7 +1544,8 @@
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-dice-red2.png",
@@ -1258,12 +1556,13 @@
     "x": 482.4,
     "y": 772.4,
     "scale": 1,
-    "zIndex": -2,
+    "zIndex": 9,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-dice.png",
@@ -1274,12 +1573,13 @@
     "x": 1628,
     "y": 858.8,
     "scale": 1,
-    "zIndex": 5,
+    "zIndex": 9,
     "flipX": false,
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-hand.gif",
@@ -1295,7 +1595,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-poker-chips1-2.gif",
@@ -1311,7 +1612,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-poker-chips1.gif",
@@ -1327,7 +1629,8 @@
     "angle": 180,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-poker-chips2-2.gif",
@@ -1343,7 +1646,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-poker-chips2.gif",
@@ -1359,7 +1663,8 @@
     "angle": 180,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-sign-blue.png",
@@ -1375,7 +1680,8 @@
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-sign-green.png",
@@ -1391,7 +1697,8 @@
     "angle": 0,
     "moveMode": 2,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "stripRes-sign-green2.png",
@@ -1407,23 +1714,8 @@
     "angle": 0,
     "moveMode": 1,
     "headingList": null,
-    "iconNextList": null
-  },
-  {
-    "name": "stripRes-striplabel.png",
-    "nameNoExt": "stripRes-striplabel",
-    "heading": "stripRes",
-    "label": "striplabel",
-    "path": "assets/images/stripRes-striplabel.png",
-    "x": 0,
-    "y": 0,
-    "scale": 1,
-    "zIndex": -2,
-    "flipX": false,
-    "angle": 0,
-    "moveMode": -1,
-    "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "supermarket-0label-99r.png",
@@ -1439,7 +1731,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "supermarket-0SF1.gif",
@@ -1455,7 +1748,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "supermarket-1label-osf.png",
@@ -1471,7 +1765,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "supermarket-2SF2.gif",
@@ -1487,7 +1782,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "supermarket-3label-nsf.png",
@@ -1503,7 +1799,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "supermarket-4z168.gif",
@@ -1519,7 +1816,8 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   },
   {
     "name": "supermarket-label-168.png",
@@ -1535,6 +1833,7 @@
     "angle": 0,
     "moveMode": -1,
     "headingList": null,
-    "iconNextList": null
+    "iconNextList": null,
+    "glowColors": null
   }
 ]

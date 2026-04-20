@@ -7,17 +7,90 @@ let sorted;
 let iconList;
 let LVICON;
 let assetsLoaded = false;
+let imgPathsCache = null;
+let isFinished = true;
+
+const headingDelays = {
+    "cuisine": 26000,
+    "houses": 21000,
+    "library": 30000,
+    "supermarket": 21500,
+    "above_blue": 0,
+    "above_map": 32000,
+    "arch": 24000,
+    "below_blue": 36000,
+    "houseFade": 36000,
+    "icon": 34000,
+    "BG": 34000,
+    "effect": 34000,
+    "label": 41000,
+    "stripRes": 0,
+    "ds": 0
+};
 
 let popHeadings = ["houses", "library", "supermarket"];
 
+const iconAudioData = {
+    'icon-0-LVICON': {
+        audio: null,
+        path: ["assets/audio/audio_1.mp3", "assets/audio/audio_2.mp3"],
+        snippet: [1, 2]
+    },
+    'icon-CHICON': {
+        audio: null,
+        path: ["assets/audio/audio_7.mp3", "assets/audio/audio_6.mp3"],
+        snippet: [7, 6]
+    },
+    'icon-SMICON': {
+        audio: null,
+        path: ["assets/audio/audio_9.mp3"],
+        snippet: [9]
+    },
+    'icon-house2': {
+        audio: null,
+        path: ["assets/audio/audio_5.mp3"],
+        snippet: [5]
+    },
+    'icon-DSICON': {
+        audio: null,
+        path: ["assets/audio/audio_4.mp3"],
+        snippet: [4]
+    },  
+    'icon-LIBICON': {
+        audio: null,
+        path: ["assets/audio/audio_8.mp3"],
+        snippet: [8]
+    },
+    'icon-alt-STRICON': {
+        audio: null,
+        path: ["assets/audio/audio_3.mp3"],
+        snippet: [3]
+    }
+}
+
+const colorKeys = {
+    "white" : "255, 255, 255, 1",
+    "yellow": "255, 233, 77, 1",
+    "blue": "77, 216, 255, 1",
+    "pink": "255, 171, 149, 1"
+}
+
+let snippetsData;
+
+let activeSubs = null;
+let subIndex = -1;
+let subStartTime = 0;
+let subRecordedTime = -1;
+
+
 class imgContainer{
-    constructor(meta, img, isVis, speed = 0.05 ){
+    constructor(meta, img, isVis, delay = 15000, speed = 0.005){
         this.name = meta.nameNoExt;
         this.heading = meta.heading;
         this.label = meta.label;
         this.img = img;
-        this.w = img.width * 0.75;
-        this.h = img.height * 0.75;
+        this.w = img.width;
+        this.h = img.height;
         this.ogX = meta.x;
         this.ogY = meta.y;
         this.x = meta.x;
@@ -27,9 +100,12 @@ class imgContainer{
 
         this.moveMode = meta.moveMode;
         this.isIcon = (this.heading === "icon");
+
         this.headingList = meta.headingList;
         //this.headingQueue = meta.headingQueue ?? [meta.headingList]
         this.iconNameList = meta.iconNextList;
+        this.glowColors = meta.glowColors;
+        this.queueIndex = 0;
 
         //transform shit
         this.scale = meta.scale;
@@ -38,7 +114,10 @@ class imgContainer{
         this.angle = radians(meta.angle ?? 0);
 
         //used to time all movement types
+        // this.startTimer = 1000;
+        // this.starting = false;
         this.timer = 0;
+        this.delay = delay;
 
         // smooth spin variables
         this.spinSpeed = 0;
@@ -77,16 +156,15 @@ class imgContainer{
     }
 
     fadeIn() {
-        //if (this.triggered === true) {return;}
+        this.triggerTime = millis() + this.delay + random(4,7) * 1000;
         this.targetAlpha = 255; 
         this.isVis = true; 
         //this.triggered = true;
     }
     fadeOut() {
-        //if (this.triggered === true) {return;}
+        this.triggerTime = millis() + this.delay + random(4, 7) * 1000;
         this.targetAlpha = 0; 
         this.isVis = false;
-        //this.triggered = true;
     }
 
     //general non smooth spin movement
@@ -115,7 +193,7 @@ class imgContainer{
     }
 
     inBounds() {
-        if (!this.isIcon || !this.isVis || this.triggered) return false;
+        if (!this.isIcon || !this.isVis || this.triggered) return false; // reemmebr to put back in ||!isfinished
         let hw = (this.w * this.scale) / 2;
         let hh = (this.h * this.scale) / 2;
         return mouseX > this.x - hw &&
@@ -125,6 +203,8 @@ class imgContainer{
     }
 
     update() {
+        if (this.triggerTime !== null && millis() < this.triggerTime) return;
+
         this.alpha = lerp(this.alpha, this.targetAlpha, this.speed);
 
         // smooth spin
@@ -157,20 +237,34 @@ class imgContainer{
                 this._scheduleNextMovement();
             }
         }
-
     }
 
     draw() {
+        if (this.alpha < 1 && this.targetAlpha === 0) return;
+
         push();
         translate(this.x, this.y); 
-        if (this.heading === "effect"){blendMode(SCREEN);}
+        if (this.heading === "effect"){blendMode(OVERLAY);}
+        else if (this.name.includes("effect")){blendMode(SCREEN);}
+        if (this.heading === "ds"){
+            if (this.name.includes("0")){
+                blendMode(HARD_LIGHT);
+            }
+            else if (this.name.includes("1")){
+                blendMode(OVERLAY);
+            }
+            else {
+                blendMode(MULTIPLY);
+            }
+        }
         tint(255, this.alpha);
         scale(this.flipX ? -this.scale : this.scale, this.scale);
         rotate(this.angle);
         
         if (this.inBounds()) {
+            let glow = this.glowColors[this.queueIndex];
             drawingContext.shadowBlur = 50;
-            drawingContext.shadowColor = 'rgba(255, 215, 0, 1)';
+            drawingContext.shadowColor = `rgba(${glow}, 1)`;
             
         } else {
             drawingContext.shadowBlur = 0;
@@ -235,21 +329,35 @@ class PopImage {
   }
 }
 
-function mousePressed() {
-    //showImage("cuisine");
-    // let now = millis();
+function setLoadingStatus(text) {
+    document.getElementById('loading-status').textContent = text;
+}
 
-    // for (let thing in popImages){
-    //     popImages[thing].trigger(now);
-    // }
+function onAssetsReady() {
+    let btn = document.getElementById('play-btn');
+    btn.textContent = 'Play';
+    btn.classList.add('ready');
+    btn.disabled = false;
+    document.getElementById('loading-status').textContent = '';
+
+    btn.addEventListener('click', () => {
+        let overlay = document.getElementById('start-overlay');
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.style.display = 'none', 800);
+    });
+}
+
+function mousePressed() {
     for (let icon of iconList) {
         if (icon.inBounds()) {
             icon.onClick();
             console.log(`${icon.name} clicked`);
-            icon.triggered = true;
+            if (icon.headingList.length === 1 || icon.queueIndex === icon.headingList.length){
+                icon.triggered = true;
+            }
+            //console.log(icon.triggered);
             break;
         }
-        //console.log(`no icon clicked`);
     }
 
     console.log(`{ x: ${mouseX}, y: ${mouseY} }`);
@@ -285,15 +393,56 @@ function showImage(headingList) {
 }
 
 function showIcons(iconNameList) {
-    if (iconNameList === null){return;}
-
     for (let icon of iconList) {
         if (iconNameList.includes(icon.name)) {
             console.log("showIcon triggered");
-            icon.fadeIn();
+            if (icon.isVis){ icon.fadeOut();}
+            else{icon.fadeIn(); }
         }
     }
 }
+
+function playIconAudio(iconName, stepIndex) {
+    let data = iconAudioData[iconName];
+    if (!data || !snippetsData) return;
+
+    if (activeSubs && activeSubs.audio.isPlaying()) {
+        activeSubs.audio.stop();
+    }
+
+    // find the matching snippet
+    let snippet = snippetsData.find(s => s.snippet === data.snippet[stepIndex]);
+    
+    activeSubs = {
+        audio: data.audio[stepIndex],
+        subtitles: snippet.meta.map(m => m.subtitle),
+        cues: snippet.meta.map(m => m.time),
+        colors: snippet.meta.map(m => m.color),
+        finished: false 
+    };
+
+    activeSubs.audio.onended(() => {
+        activeSubs.finished = true; 
+    });
+
+    subIndex = -1;
+    subStartTime = millis();
+    subRecordedTime = -1;
+    data.audio[stepIndex].play();
+}
+
+function timeSubtitles() {
+    if (!activeSubs) return;
+    let cues = activeSubs.cues;
+    for (let i = 0; i < cues.length; i++) {
+        if (subRecordedTime < cues[i]) {
+            subIndex = i - 1;
+            return;
+        }
+    }
+    subIndex = cues.length - 1;
+}
+
 
 function loadImageAsync(path) {
   return new Promise((resolve, reject) => {
@@ -307,27 +456,35 @@ function loadImageAsync(path) {
     });
 }
 
-
 let visibleHeadings = ["stripRes", "effect", "above_blue", "above_map", "below_blue", "BG"];
 
+//let visibleHeadings = ["stripRes", "above_blue", "above_map", "cuisine", "arch", "icon", "houseFade", "houses", "label"];
+
 async function loadByHeading(heading) {
-    const response = await fetch('assets/images/imgPaths.json');
-    const imgPaths = await response.json();
-    const group = imgPaths.filter(i => i.heading === heading);
+    if (!imgPathsCache){
+        const response = await fetch('assets/images/imgPaths.json');
+        imgPathsCache = await response.json();
+    }
+
+    const group = imgPathsCache.filter(i => i.heading === heading);
     let headCheck = false;
     if (visibleHeadings.includes(heading)) {headCheck = true;}
 
+    let delayInterval = headingDelays[heading];
     const results = await Promise.all(
         group.map(async (meta, i) => {
             let isVis = false;
             const img = await loadImageAsync(meta.path);
+            //console.log(meta.path, img.width, img.height);
             if (popHeadings.includes(heading)) {
-                let interval = i*350;
-                if (!heading === "houses" && meta.name.includes("label")){interval = i*50;}
+                let interval = delayInterval + i*5500;
+                if (heading !== "houses" && meta.name.includes("label")){interval = delayInterval + i*2500;}
+                else if (heading === "supermarket") {interval = delayInterval + i*2500}
                 return new PopImage(img, meta.nameNoExt, meta.heading, meta.scale, meta.x, meta.y, meta.w, meta.h, interval);
             }
+            img.resize(img.width * 0.75, img.height * 0.75);
             if (headCheck || meta.nameNoExt === "icon-0-LVICON"){isVis = true;}
-            return new imgContainer(meta, img, isVis);
+            return new imgContainer(meta, img, isVis, delayInterval);
         })
 
     );
@@ -338,83 +495,120 @@ async function loadByHeading(heading) {
 async function setup() {
     createCanvas(1920, 1080);
     imageMode(CENTER);
+    textSize(40);
+    textAlign(CENTER, CENTER);
+
+    // setLoadingStatus('audio data loading');
+    // const res = await fetch('assets/audio/subtitleData.json');
+    // snippetsData = await res.json();
+
+    // for (let key in iconAudioData) {
+    //     let data = iconAudioData[key];
+    //     data.audio = await Promise.all(data.path.map(p => loadSound(p)));
+    // }
+    // setLoadingStatus("audio data loaded, background loading");
 
     bgImg = await loadImage("assets/images/BACKGROUND.png");
-    streets = await loadImage("assets/streets-real.png");
+    setLoadingStatus('background loaded, houses loading');
+    //streets = await loadImage("assets/streets-real.png");
+    //setLoadingStatus('street grid loaded, houses loading')
 
-    //--loading popimages-- headings are houses, library, and supermarket
-    // const houses = await loadByHeading('houses');
-    // const libraries = await loadByHeading('library');
-    // const supermarkets = await loadByHeading('supermarket');
+    //// --loading popimages-- headings are houses, library, and supermarket
+    const houses = await loadByHeading('houses');
+    setLoadingStatus('houses loaded, libraries loading')
+    const libraries = await loadByHeading('library');
+    setLoadingStatus('libraries loaded, supermarkets loading')
+    const supermarkets = await loadByHeading('supermarket');
 
-    // for (let asset of houses){
-    //     popImages[asset.name] = asset;
-    // }
-    // for (let asset of libraries){
-    //     popImages[asset.name] = asset;
-    // }
-    // for (let asset of supermarkets){
-    //     popImages[asset.name] = asset;
-    // }
+    for (let asset of houses){
+        popImages[asset.name] = asset;
+    }
+    
+    for (let asset of libraries){
+        popImages[asset.name] = asset;
+    }
+    
+    for (let asset of supermarkets){
+        popImages[asset.name] = asset;
+    }
+    setLoadingStatus('supermarkets loaded, cuisine loading')
 
     // //--loading fadeimages---
-    // const cuisine = await loadByHeading('cuisine');
+    const cuisine = await loadByHeading('cuisine');
 
-    // for (let asset of cuisine) {
-    //     images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
-    // }
+    for (let asset of cuisine) {
+        images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
+    }
+    setLoadingStatus('cuisine loaded, desert loading');
+
+    const ds = await loadByHeading('ds');
+
+    for (let asset of ds) {
+        images[asset.name] = asset;
+    }
+    setLoadingStatus("desert loaded, architecture loading");
 
     const arch = await loadByHeading('arch');
 
     for (let asset of arch) {
         images[asset.name] = asset; //perhaps put images into separate arrays depending on heading?
     }
+    setLoadingStatus('architecture loaded, stripres loading')
     
     const stripRes = await loadByHeading('stripRes');
 
     for (let asset of stripRes){
         images[asset.name] = asset;
     }
+    setLoadingStatus('stripres loaded, strip-1 assets loading')
 
     const aboveBlue = await loadByHeading('above_blue');
     for (let asset of aboveBlue){
         images[asset.name] = asset;
     }
+    setLoadingStatus('strip-1 assets loaded, strip-2 assets loading')
 
     const belowBlue = await loadByHeading('below_blue');
     for (let asset of belowBlue){
         images[asset.name] = asset;
     }
+    setLoadingStatus('strip-2 assets loaded, strip-2a loading')
 
     const effect = await loadByHeading('effect');
     for (let asset of effect){
         images[asset.name] = asset;
     }
+    setLoadingStatus('strip-2a loaded, bg loading')
 
     const BG = await loadByHeading('BG');
     for (let bg of BG ){
         images[bg.name] = bg;
     }
+    setLoadingStatus('bg loaded, strip-3 assets loading')
 
     const aboveMap = await loadByHeading('above_map');
     for (let asset of aboveMap){
         images[asset.name] = asset;
     }
+    setLoadingStatus('strip-3 assets loaded, house other assets loading')
 
     const houseFade = await loadByHeading('houseFade');
     for (let asset of houseFade){
         images[asset.name] = asset;
     }
+    setLoadingStatus('house other assets loaded, icons loading')
 
     const icons = await loadByHeading('icon');
     for (let asset of icons){
         images[asset.name] = asset;
     }
+    setLoadingStatus('icons loaded, final assets loading')
 
     const labels = await loadByHeading('label');
     for (let asset of labels){
         images[asset.name] = asset;
     }
+    setLoadingStatus('labels loaded')
 
     sorted = Object.values(images).sort((a, b) => a.zIndex - b.zIndex);
 
@@ -422,19 +616,32 @@ async function setup() {
 
     iconList.forEach(icon => {
         icon.onClick = () => {
-            showImage(icon.headingList);
-            showIcons(icon.iconNameList);
+            let current = icon.headingList[icon.queueIndex];
+            showImage(current);
+            if (icon.iconNameList !== null && icon.queueIndex < icon.iconNameList.length){
+                showIcons(icon.iconNameList[icon.queueIndex]);
+            }
+            playIconAudio(icon.name, icon.queueIndex);
             // showIcons(icon.iconNameList);
             // let current = icon.headingList[icon.queueIndex];
             // showImage(current);
-            // 
-            // if (icon.queueIndex < icon.headingQueue.length - 1) {
-            //     icon.queueIndex++; // advance to next interaction
-            // } 
+            //'icon-CHICON': [["below_blue"], ["arch"]],
+            //q0, length 2 (clicked)
+            //q1
+            //q1, length 2 (clicked)
+            //q2
+            
+            
+            //console.log(`on click queue index: ${icon.queueIndex}`);
+            if (icon.queueIndex < icon.headingList.length) {
+                icon.queueIndex++; // advance to next interaction
+            } 
+            //console.log(`updated on click queue index: ${icon.queueIndex}`);
         }
     });
 
     console.log(images);
+    onAssetsReady();
 }
 
 function draw() {
@@ -442,7 +649,7 @@ function draw() {
     background(220);
     image(bgImg, 960, 540, 1920, 1080);
 
-    image(streets, 960, 540, 1920*0.94, 1080*0.94);
+    //image(streets, 960, 540, 1920*0.94, 1080*0.94);
     //images["arch-roof-99"].draw();
 
     let anyHovered = false;
@@ -464,4 +671,21 @@ function draw() {
     noStroke;
     fill("black");
     rect(0, 965, 1920, 115);
+
+    if (activeSubs) {
+        subRecordedTime = millis() - subStartTime;
+        timeSubtitles();
+        if (subIndex > -1) {
+            let colorStr = colorKeys[activeSubs.colors[subIndex]];
+            fill(`rgba(${colorStr})`); // ← uses color from json
+            text(activeSubs.subtitles[subIndex], 960, 1022.5);
+        }
+        isFinished = activeSubs.finished;
+        //console.log(activeSubs.finished)
+
+        if (isFinished){
+            activeSubs = null;
+            subIndex = -1
+        }
+    }
 }
